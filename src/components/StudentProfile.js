@@ -18,25 +18,31 @@ class StudentProfile extends Component {
   render() {
     const { student } = this.state;
 
-    const blocksArr = student.blockHistory.map(block => {
-      return block.name;
-    });
-
-    const blocks = blocksArr.reduce((acc, block) => {
-      acc[block] = (acc[block] || 0) + 1;
-      return acc;
-    }, []);
-
     return (
       <section>
         <h4>{student.name}</h4>
         <p>Starting Cohort: {student.startingCohort}</p>
+        <p>Block History:</p>
+        <ul>
+          {student.blockHistory.map(block => {
+            return <li key={block._id}>{block.name}</li>;
+          })}
+        </ul>
       </section>
     );
   }
 
   componentDidMount = async () => {
     const student = await api.fetchStudentById(this.props.id);
+    // const blocksArr = student.blockHistory.map(block => {
+    //   return block.name;
+    // });
+    // console.log(blocksArr, "<< block Arr");
+    // const blockHistory = blocksArr.reduce((acc, block) => {
+    //   acc[block] = (acc[block] || 0) + 1;
+    //   return acc;
+    // }, []);
+
     this.setState({ student });
   };
 }
