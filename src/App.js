@@ -4,6 +4,8 @@ import "./App.css";
 import Heading from "./components/Heading";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
+import StudentsSearch from "./components/StudentsSearch";
+import StudentProfile from "./components/StudentProfile";
 
 class App extends Component {
   render() {
@@ -13,6 +15,8 @@ class App extends Component {
         <Nav />
         <Router>
           <Home path="/"/>
+          <StudentsSearch path='/students'/>
+          <StudentProfile path='/students/:id'/>
         </Router>
       </div>
     );
