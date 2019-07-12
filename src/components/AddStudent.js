@@ -8,7 +8,7 @@ class AddStudent extends Component {
     addedStudent: {}
   };
   render() {
-    console.log(this.state.addedStudent);
+    const { name, startingCohort, currentBlock } = this.state.addedStudent;
     return (
       <section>
         <form onSubmit={this.handleSubmit}>
@@ -32,15 +32,17 @@ class AddStudent extends Component {
           ""
         ) : (
           <p>
-            Name: {this.state.addedStudent.name} <br />
+            Name: {name} <br />
+            Starting Cohort: {startingCohort} <br />
+            Current Block: {currentBlock}
           </p>
         )}
       </section>
     );
   }
-  componentDidUpdate = async () => {
-    const student = await api;
-  };
+  // componentDidUpdate = async () => {
+  //   const student = await api;
+  // };
 
   handleChange = event => {
     const { value, id } = event.target;

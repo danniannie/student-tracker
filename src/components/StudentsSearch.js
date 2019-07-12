@@ -1,25 +1,35 @@
 import React, { Component } from "react";
-import Search from "./Search";
+
 import StudentsList from "./StudentsList";
-import * as api from '../api';
+import * as api from "../api";
+import { countStudents } from "../utils/utils";
 
 class StudentsSearch extends Component {
-    state = {
-        students: []
-    }
-    render() {
-      const {students} = this.state
+  state = {
+    students: [],
+    currentStudentCount: 0,
+    isLoading: true
+  };
+  render() {
+    const { students, currentStudentCount, isLoading } = this.state;
     return (
       <div>
-        <Search />
-        <StudentsList students={students}/>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <StudentsList
+            students={students}
+            currentStudentCount={currentStudentCount}
+          />
+        )}
       </div>
     );
   }
   componentDidMount = async () => {
-    const students = await api.fetchStudents()
-    this.setState({students})
-  }
+    const students = await api.fetchStudents();
+    const currentStudentCount = countStudents(students);
+    this.setState({ students, currentStudentCount, isLoading: false });
+  };
 }
 
 export default StudentsSearch;

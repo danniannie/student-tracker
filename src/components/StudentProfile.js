@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
+import * as utils from "../utils/utils";
 
 class StudentProfile extends Component {
   state = {
@@ -12,38 +13,61 @@ class StudentProfile extends Component {
           slug: "core"
         }
       ]
-    }
+    },
+    blockHistoryObj: {},
+    isLoading: true
   };
 
   render() {
-    const { student } = this.state;
+    const { student, blockHistoryObj, isLoading } = this.state;
 
     return (
       <section>
-        <h4>{student.name}</h4>
-        <p>Starting Cohort: {student.startingCohort}</p>
-        <p>Block History:</p>
-        <ul>
-          {student.blockHistory.map(block => {
-            return <li key={block._id}>{block.name}</li>;
-          })}
-        </ul>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <div>
+            <h4>{student.name}</h4>
+            <p>Starting Cohort: {student.startingCohort}</p>
+            <p>Block History:</p>
+            <ul>
+              <li>Core: {blockHistoryObj.Core}</li>
+              <li>Back End 1: {blockHistoryObj["Back End 1"]}</li>
+              <li>Back End 2: {blockHistoryObj["Back End 2"]}</li>
+              <li>Front End 1: {blockHistoryObj["Front End 1"]}</li>
+              <li>Front End 2: {blockHistoryObj["Front End 2"]}</li>
+              <li>Project Phase: {blockHistoryObj["Project Phase"]}</li>
+              <li>Graduated: {blockHistoryObj.Graduated}</li>
+            </ul>
+            <button type="submit" onClick={this.handleClick}>
+              Progress Student
+            </button>
+          </div>
+        )}
       </section>
     );
   }
 
   componentDidMount = async () => {
     const student = await api.fetchStudentById(this.props.id);
-    // const blocksArr = student.blockHistory.map(block => {
-    //   return block.name;
-    // });
-    // console.log(blocksArr, "<< block Arr");
-    // const blockHistory = blocksArr.reduce((acc, block) => {
-    //   acc[block] = (acc[block] || 0) + 1;
-    //   return acc;
-    // }, []);
 
-    this.setState({ student });
+    const blockHistoryObj = utils.getBlockHistory(student);
+
+    this.setState({ student, blockHistoryObj, isLoading: false });
+  };
+
+  handleClick = async () => {
+    this.setState({ isLoading: true });
+    const updatedStudent = await api.updateStudentbyId(this.props.id);
+
+    this.setState({ student: updatedStudent, isLoading: false });
+  };
+
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (prevState.student !== this.state.student) {
+      const blockHistoryObj = utils.getBlockHistory(this.state.student);
+      this.setState({ blockHistoryObj });
+    }
   };
 }
 

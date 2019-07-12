@@ -16,3 +16,8 @@ export const postStudent = async student => {
   const { data } = await axios.post(`${baseUrl}`, student);
   return data.student;
 };
+
+export const updateStudentbyId = async student_id => {
+  const { data } = await axios.patch(`${baseUrl}/${student_id}?progress=true`);
+  return data.student;
+};
