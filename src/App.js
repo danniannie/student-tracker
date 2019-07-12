@@ -14,7 +14,7 @@ class App extends Component {
       <div className="App">
         <Heading />
         <Nav />
-        <Router>
+        <Router className="scroll">
           <Home path="/" />
           <StudentsSearch path="/students" />
           <StudentProfile path="/students/:id" />

@@ -10,8 +10,8 @@ class AddStudent extends Component {
   render() {
     const { name, startingCohort, currentBlock } = this.state.addedStudent;
     return (
-      <section>
-        <form onSubmit={this.handleSubmit}>
+      <section >
+        <form  className="form" onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name: </label>
           <input
             type="text"

@@ -1,8 +1,176 @@
 .App {
   text-align: center;
+  font-family: 'Raleway', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.5fr 8fr;
+  grid-template-areas:
+  "heading"
+  "nav"
+  "main"
+}
+
+.heading {
+  grid-area: heading;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #0B0C0C;
+  color:white;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+
+h1 {
+  margin: 0;
+}
+
+h1 span {
+  color: #ba1531;
 }
 
 nav {
+  grid-area: nav;
+  align-items: center;
   display: flex;
   justify-content: space-evenly;
+  padding: 10px;
+  background: white;
+  /* border-bottom: #0B0C0C solid 1px; */
+  margin-bottom: 5px;
 }
+
+nav a {
+  color: #ba1531;
+  text-decoration: none;
+}
+
+nav a:hover {
+  cursor: pointer;
+}
+
+.app-title {
+  background-color:#ba1531;
+  color: white;
+  margin: 0;
+  padding: 10px;
+}
+
+.scroll {
+  grid-area: main;
+  overflow-y: scroll;
+}
+
+.home-list {
+  grid-area: main;
+  list-style: none;
+  text-align: left;
+} 
+
+.home-list li {
+  padding: 3px;
+}
+
+.list {
+  grid-area: main;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.list li {
+  list-style: none;
+  border: solid #0B0C0C 1px;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  width: 30%;
+}
+
+.list li a {
+  color: #ba1531;
+  text-decoration: none;
+}
+
+.list li:hover {
+  box-shadow: 0px 0px 5px 2px #ba1531;
+  transform: scale(1.02)
+}
+
+.list h4, p {
+  margin: 0;
+  padding: 2px;
+}
+
+.count p {
+  padding: 10px;
+}
+
+.form {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.form label {
+  text-align: left;
+}
+
+.form input {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* .search label {
+  font-size: 1.2em;
+} */
+
+.form button {
+  border-radius: 10px;
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+/* .search button:hover {
+  cursor: pointer;
+  background-color: #e0ff4f;
+} */
+
+
+
+@media only screen and (max-width: 600px) {
+  .heading {
+    font-size: 0.8em;
+    margin: 0;
+  }
+
+  .list ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .list li {
+    list-style: none;
+    border: solid #0B0C0C 1px;
+    margin: 5px;
+    padding: 5px;
+    width: 90%;
+  }
+}
+

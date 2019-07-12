@@ -3,9 +3,9 @@ import { Link } from "@reach/router";
 
 const StudentsList = ({ students, currentStudentCount }) => {
   return (
-    <section>
-      <p>There are currently {currentStudentCount} on the course.</p>
-      <ul>
+    <section >
+      <p className="count">There are currently <b>{currentStudentCount}</b> students on the course.</p>
+      <ul className="list">
         {students.map(student => {
           return (
             <li key={student._id}>

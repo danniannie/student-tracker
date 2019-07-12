@@ -2,8 +2,8 @@ import React from 'react';
 
 const Heading = () => {
     return (
-        <div>
-           <h1>Student Tracker</h1> 
+        <div className='heading'>
+           <h1><span>{'<'}</span> Northcoders' Student Tracker <span>/></span></h1> 
         </div>
     );
 };
