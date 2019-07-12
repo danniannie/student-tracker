@@ -22,7 +22,7 @@ class StudentProfile extends Component {
     const { student, blockHistoryObj, isLoading } = this.state;
 
     return (
-      <section>
+      <section className="stud-profile">
         {isLoading ? (
           <p>Loading...</p>
         ) : (
@@ -31,13 +31,13 @@ class StudentProfile extends Component {
             <p>Starting Cohort: {student.startingCohort}</p>
             <p>Block History:</p>
             <ul>
-              <li>Core: {blockHistoryObj.Core}</li>
-              <li>Back End 1: {blockHistoryObj["Back End 1"]}</li>
-              <li>Back End 2: {blockHistoryObj["Back End 2"]}</li>
-              <li>Front End 1: {blockHistoryObj["Front End 1"]}</li>
-              <li>Front End 2: {blockHistoryObj["Front End 2"]}</li>
-              <li>Project Phase: {blockHistoryObj["Project Phase"]}</li>
-              <li>Graduated: {blockHistoryObj.Graduated}</li>
+              <li><b>{'>'}</b> Core: {blockHistoryObj.Core}</li>
+              <li><b>{'>'}</b> Back End 1: {blockHistoryObj["Back End 1"]}</li>
+              <li><b>{'>'}</b> Back End 2: {blockHistoryObj["Back End 2"]}</li>
+              <li><b>{'>'}</b> Front End 1: {blockHistoryObj["Front End 1"]}</li>
+              <li><b>{'>'}</b> Front End 2: {blockHistoryObj["Front End 2"]}</li>
+              <li><b>{'>'}</b> Project Phase: {blockHistoryObj["Project Phase"]}</li>
+              <li><b>{'>'}</b> Graduated: {blockHistoryObj.Graduated}</li>
             </ul>
             <button type="submit" onClick={this.handleClick}>
               Progress Student

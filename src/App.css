@@ -145,6 +145,20 @@ nav a:hover {
   text-transform: uppercase;
 }
 
+.stud-profile button {
+  border-radius: 10px;
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+.stud-profile ul {
+  list-style: none;
+  text-align: left;
+} 
+
+.stud-profile li {
+  padding: 3px;
+}
 /* .search button:hover {
   cursor: pointer;
   background-color: #e0ff4f;
