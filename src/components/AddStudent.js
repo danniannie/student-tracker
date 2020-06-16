@@ -5,13 +5,13 @@ class AddStudent extends Component {
   state = {
     name: "",
     startingCohort: 0,
-    addedStudent: {}
+    addedStudent: ""
   };
   render() {
     const { name, startingCohort, currentBlock } = this.state.addedStudent;
     return (
-      <section >
-        <form  className="form" onSubmit={this.handleSubmit}>
+      <section>
+        <form className="form" onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name: </label>
           <input
             type="text"
@@ -53,7 +53,7 @@ class AddStudent extends Component {
     event.preventDefault();
     const studentObj = this.state;
     const addedStudent = await api.postStudent(studentObj);
-    this.setState({ addedStudent });
+    this.setState({ addedStudent: "yes" });
   };
 }
 
