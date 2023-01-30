@@ -164,6 +164,12 @@ nav a:hover {
   background-color: #e0ff4f;
 } */
 
+.stud-profile-div {
+  margin: auto;
+  width: 50%;
+  border-left: 2px solid #ba1531;
+ 
+}
 
 
 @media only screen and (max-width: 600px) {

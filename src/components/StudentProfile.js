@@ -30,15 +30,15 @@ class StudentProfile extends Component {
             <h4>{student.name}</h4>
             <p>Starting Cohort: {student.startingCohort}</p>
             <p>Block History:</p>
+            <div className="stud-profile-div">
             <ul>
-              <li><b>{'>'}</b> Core: {blockHistoryObj.Core}</li>
-              <li><b>{'>'}</b> Back End 1: {blockHistoryObj["Back End 1"]}</li>
-              <li><b>{'>'}</b> Back End 2: {blockHistoryObj["Back End 2"]}</li>
-              <li><b>{'>'}</b> Front End 1: {blockHistoryObj["Front End 1"]}</li>
-              <li><b>{'>'}</b> Front End 2: {blockHistoryObj["Front End 2"]}</li>
+              <li><b>{'>'}</b> Fundamentals: {blockHistoryObj.Fundamentals}</li>
+              <li><b>{'>'}</b> Back End: {blockHistoryObj["Back End"]}</li>
+              <li><b>{'>'}</b> Front End: {blockHistoryObj["Front End"]}</li>
               <li><b>{'>'}</b> Project Phase: {blockHistoryObj["Project Phase"]}</li>
               <li><b>{'>'}</b> Graduated: {blockHistoryObj.Graduated}</li>
             </ul>
+            </div>
             <button type="submit" onClick={this.handleClick}>
               Progress Student
             </button>

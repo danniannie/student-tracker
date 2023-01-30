@@ -28,7 +28,8 @@ class AddStudent extends Component {
           />
           <button type="submit">Add Student</button>
         </form>
-        {Object.keys(this.state.addedStudent).length === 0 ? (
+        {
+        Object.keys(this.state.addedStudent).length === 0 ? (
           ""
         ) : (
           <p>
@@ -40,9 +41,6 @@ class AddStudent extends Component {
       </section>
     );
   }
-  // componentDidUpdate = async () => {
-  //   const student = await api;
-  // };
 
   handleChange = event => {
     const { value, id } = event.target;
@@ -52,7 +50,7 @@ class AddStudent extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     const studentObj = this.state;
-    const addedStudent = await api.postStudent(studentObj);
+    await api.postStudent(studentObj);
     this.setState({ addedStudent: "yes" });
   };
 }
